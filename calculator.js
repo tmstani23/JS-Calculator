@@ -7,7 +7,7 @@ let subt;
 let mult;
 let divide;
 let isCurrent = false
-let clearClicked = false;
+let clear = false;
 
 function storeNum(num) {
     //if operation button clicked:
@@ -21,13 +21,14 @@ function storeNum(num) {
     //     outputAns();
         
     // }
+    
     if (numPrev.length > 0 && isCurrent == true){
-        console.log("true");
+        //console.log("true");
         //Need to figure out how to chain subtract.  Can't distinguish between add and subtract here
         //add = true;
         numDisplay.push(num);
         numCurrent.push(num);
-        console.log(numPrev + "numPrev", numCurrent + "numCurrent");
+        //console.log(numPrev + "numPrev", numCurrent + "numCurrent");
         outputNum(numDisplay);
         
         
@@ -43,50 +44,103 @@ function storeNum(num) {
     }
 }
 function addNum() {
-    
-    
+        if (numPrev.length >= 1 && numCurrent.length >=1) {
+            outputAns();
+            add = true;
+            mult = false;
+            divide = false;
+            subt = false;
+            isCurrent = true;
+            numDisplay.push(' +');
+            //numDisplay.join(" ");
+            outputNum(numDisplay);
+        
+        }
+        else{
+        
         add = true;
         mult = false;
         divide = false;
         subt = false;
         isCurrent = true;
         numDisplay.push(' +');
-        //numDisplay.join(" ");
+        console.log(numDisplay);
         outputNum(numDisplay);
-        outputAns(); 
+        outputAns();
+        }
+         
     
     
     
 }
 function subtNum() {
-    subt = true;
-    add = false;
-    mult = false;
-    divide = false;
-    isCurrent = true;
-    numDisplay.push(" -");
-    outputNum(numDisplay);
-    outputAns()
+    if (numPrev.length >= 1 && numCurrent.length >=1) {
+        outputAns()
+        subt = true;
+        add = false;
+        mult = false;
+        divide = false;
+        isCurrent = true;
+        numDisplay.push(" -");
+        outputNum(numDisplay);
+    
+    }
+    else {
+        subt = true;
+        add = false;
+        mult = false;
+        divide = false;
+        isCurrent = true;
+        numDisplay.push(" -");
+        outputNum(numDisplay);
+        outputAns()
+    }
 }
 function divideNum() {
-    divide = true;
-    subt = false;
-    mult = false;
-    add = false;
-    isCurrent = true;
-    numDisplay.push(" /");
-    outputNum(numDisplay);
-    outputAns();
+    if (numPrev.length >= 1 && numCurrent.length >=1) {
+        outputAns()
+        subt = false;
+        add = false;
+        mult = false;
+        divide = true;
+        isCurrent = true;
+        numDisplay.push(" /");
+        outputNum(numDisplay);
+    
+    }
+    else {
+        subt = false;
+        add = false;
+        mult = false;
+        divide = true;
+        isCurrent = true;
+        numDisplay.push(" /");
+        outputNum(numDisplay);
+        outputAns()
+    }
 }
 function multNum() {
-    mult = true;
-    add = false;
-    subt = false;
-    divide = false;
-    isCurrent = true;
-    numDisplay.push(" *");
-    outputNum(numDisplay);
-    outputAns();
+    if (numPrev.length >= 1 && numCurrent.length >=1) {
+        outputAns()
+        subt = false;
+        add = false;
+        mult = true;
+        divide = false;
+        isCurrent = true;
+        numDisplay.push(" *");
+        outputNum(numDisplay);
+    
+    }
+    else {
+        subt = false;
+        add = false;
+        mult = true;
+        divide = false;
+        isCurrent = true;
+        numDisplay.push(" *");
+        outputNum(numDisplay);
+        outputAns()
+    }
 }
 function clearAll(clear) {
     
@@ -94,21 +148,41 @@ function clearAll(clear) {
         numCurrent = [];
         numPrev = [];
         numDisplay = [0];
+        tempAns = 0;
         add = false;
         subt = false;
         mult = false;
         divide = false;
         isCurrent = false;
         clear = false;
+        
         outputNum(0);
-        //outputAns();
+        
+        outputAns();
+    }
+    else if(clear == "ac") {
+        console.log("clearall true");
+        numCurrent = [];
+        numPrev = [];
+        numDisplay = [0];
+        tempAns = 0;
+        add = false;
+        subt = false;
+        mult = false;
+        divide = false;
+        isCurrent = false;
+        clear = false; 
+        document.getElementById("outputP").innerHTML = tempAns;
+        outputNum(0);
+        outputAns();
+
     }
     else {
         numCurrent = [];
         numPrev = [];
         //numDisplay1 = [];
         //numDisplay2 = [];
-        numDisplay = [];
+        //numDisplay = [];
         //isCurrent = false;
         //add = false;
         //subt = false;
@@ -121,40 +195,62 @@ function clearAll(clear) {
    
 }
 
-// function clearCurrent() {
-//     if (isCurrent == true) {
-//         numCurrent = [0];
-//     }
-//     else {
-//         numPrev = [0];
-//     }
-// }
-function outputNum(num) {
+function clearCurrent() {
+    numCurrent = [0];
+    if (numPrev.length == 1 && numCurrent.length == 0) {
+        console.log("reset answer to zero");
+        numPrev = [0];
+    }
+    //console.log(numCurrent.length + "current");
     
+    //if 
+    else if (numDisplay.length >= 3) {
+        //numDisplay = numDisplay.pop();
+        numDisplay.pop();
+        numDisplay = [numDisplay];
+        //numDisplay.push(numCurrent);
+        
+        console.log(numDisplay + "pop");
+    }
+    else {
+        numDisplay = numCurrent;
+        console.log("numdisplay = numcurrent");
+    }
+    //numDisplay = [numPrev, numCurrent];
+    outputNum(numDisplay);
+}
+function outputNum(num) {
+    if(numDisplay[0] == 0 && numDisplay.length >=3){
+        numDisplay.shift();
+        numDisplay = [numDisplay];
+    }
     console.log(num);
-    document.getElementById("outputP").innerHTML = num;
+    document.getElementById("numDisplayP").innerHTML = num;
 }
 function outputAns(clear) {
     //merge all numbers in array into one number:
     if (numCurrent.length == 0) {
-        console.log("numCurrentlength is 0")
+        //console.log("numCurrentlength is 0")
         numCurrent.push(0);
+    }
+    if (numPrev.length == 0) {
+        //console.log("numCurrentlength is 0")
+        numPrev.push(0);
     }
     
     numPrev = parseInt(numPrev.join(''));
     numCurrent = parseInt(numCurrent.join(''));
-    console.log(numPrev);
-    console.log(numCurrent);
+    
     
     if (add == true) {
-        console.log("add is true");
+        //console.log("add is true");
         tempAns = (numPrev + numCurrent);
         document.getElementById("outputP").innerHTML = tempAns;
         
-        console.log(tempAns + "tempans");
+        //console.log(tempAns + "tempans");
     }
     if (subt == true) {
-        console.log("subt is true");
+        //console.log("subt is true");
         tempAns = (numPrev - numCurrent);
         document.getElementById("outputP").innerHTML = tempAns;
         //subt = false;
@@ -163,9 +259,9 @@ function outputAns(clear) {
         console.log("mult is true");
         //problem is here:
         
-        if(numCurrent[0] = 0) {
+        if(numCurrent == 0) {
             tempAns = numPrev * 1;
-            console.log("is zero");
+            //console.log("is zero");
         }
         else {
             tempAns = numPrev * numCurrent;
@@ -175,28 +271,25 @@ function outputAns(clear) {
         
     }
     if (divide == true) {
-        //console.log(typeof(numPrev));
-        tempAns = (numPrev / numCurrent);
-        document.getElementById("outputP").innerHTML = tempAns;
-        //divide = false;
+        if(numCurrent == 0) {
+            tempAns = numPrev * 1;
+            console.log("is zero");
+        }
+        else {
+            tempAns = numPrev / numCurrent;
+            document.getElementById("outputP").innerHTML = tempAns;
+
+        }
+        
     }
     //call clear function to reset variables
-    
-    clearAll(false);
+    //clear = false;
+    clearAll(clear);
     //push answer back into numPrev array
     numPrev.push(tempAns);
-    numDisplay.push(tempAns);
-    console.log(numPrev + "numPrev"); 
-    console.log(numCurrent + "numCurrent");
-
-    
-
-    
-    
+    //numDisplay.push(tempAns);
+    //console.log(numPrev + "numPrev"); 
+    //console.log(numCurrent + "numCurrent");
 
 }
 
-//console.log(multNum(buttonInput1, buttonInput2));
-//console.log(addNum(buttonInput1, buttonInput2));
-//console.log(subtractNum(buttonInput1, buttonInput2));
-//console.log(divideNum(buttonInput1, buttonInput2));
