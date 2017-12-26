@@ -45,6 +45,7 @@ function storeNum(num) {
 }
 function addNum() {
         if (numPrev.length >= 1 && numCurrent.length >=1) {
+            //console.log(true + "addnum")
             outputAns();
             add = true;
             mult = false;
@@ -57,14 +58,15 @@ function addNum() {
         
         }
         else{
-        
+        //console.log(tempAns + "after plus");
         add = true;
         mult = false;
         divide = false;
         subt = false;
         isCurrent = true;
         numDisplay.push(' +');
-        console.log(numDisplay);
+        //console.log(false + "addnum")
+        //console.log(numDisplay);
         outputNum(numDisplay);
         outputAns();
         }
@@ -147,8 +149,8 @@ function clearAll(clear) {
     if(clear == true){
         numCurrent = [];
         numPrev = [];
-        numDisplay = [0];
-        tempAns = 0;
+        numDisplay = [tempAns];
+        //tempAns = 0;
         add = false;
         subt = false;
         mult = false;
@@ -156,12 +158,12 @@ function clearAll(clear) {
         isCurrent = false;
         clear = false;
         
-        outputNum(0);
+        outputNum(numDisplay);
         
-        outputAns();
+       // outputAns();
     }
     else if(clear == "ac") {
-        console.log("clearall true");
+        
         numCurrent = [];
         numPrev = [];
         numDisplay = [0];
@@ -180,15 +182,6 @@ function clearAll(clear) {
     else {
         numCurrent = [];
         numPrev = [];
-        //numDisplay1 = [];
-        //numDisplay2 = [];
-        //numDisplay = [];
-        //isCurrent = false;
-        //add = false;
-        //subt = false;
-        //mult = false;
-        //divide = false;
-        //isCurrent = false;
     }
    
 
@@ -198,7 +191,7 @@ function clearAll(clear) {
 function clearCurrent() {
     numCurrent = [0];
     if (numPrev.length == 1 && numCurrent.length == 0) {
-        console.log("reset answer to zero");
+        //console.log("reset answer to zero");
         numPrev = [0];
     }
     //console.log(numCurrent.length + "current");
@@ -210,21 +203,24 @@ function clearCurrent() {
         numDisplay = [numDisplay];
         //numDisplay.push(numCurrent);
         
-        console.log(numDisplay + "pop");
+        //console.log(numDisplay + "pop");
     }
     else {
         numDisplay = numCurrent;
-        console.log("numdisplay = numcurrent");
+        //console.log("numdisplay = numcurrent");
     }
     //numDisplay = [numPrev, numCurrent];
+    
     outputNum(numDisplay);
 }
 function outputNum(num) {
-    if(numDisplay[0] == 0 && numDisplay.length >=3){
+    if(numDisplay[0] == 0 && numDisplay.length >=2){
         numDisplay.shift();
         numDisplay = [numDisplay];
     }
-    console.log(num);
+    //console.log(num);
+    //numDisplay = numDisplay.join(' ');
+    //numDisplay = [numDisplay];
     document.getElementById("numDisplayP").innerHTML = num;
 }
 function outputAns(clear) {
@@ -240,14 +236,24 @@ function outputAns(clear) {
     
     numPrev = parseInt(numPrev.join(''));
     numCurrent = parseInt(numCurrent.join(''));
+    //console.log(numPrev + "numPrev");
+    //console.log(numCurrent + "numCurrent");
     
     
     if (add == true) {
         //console.log("add is true");
-        tempAns = (numPrev + numCurrent);
+        // if (tempAns != 0 && numCurrent == 0 && numPrev == 0)  {
+        //   console.log(tempAns + "tempanstrue");  
+        //   tempAns = tempAns;  
+        // }
+        // else {
+            tempAns = (numPrev + numCurrent);
+            //console.log(tempAns + "tempans");
+        // }
+        
         document.getElementById("outputP").innerHTML = tempAns;
         
-        //console.log(tempAns + "tempans");
+        
     }
     if (subt == true) {
         //console.log("subt is true");
@@ -256,7 +262,7 @@ function outputAns(clear) {
         //subt = false;
     }
     if (mult == true) {
-        console.log("mult is true");
+        //console.log("mult is true");
         //problem is here:
         
         if(numCurrent == 0) {
@@ -273,7 +279,7 @@ function outputAns(clear) {
     if (divide == true) {
         if(numCurrent == 0) {
             tempAns = numPrev * 1;
-            console.log("is zero");
+            //console.log("is zero");
         }
         else {
             tempAns = numPrev / numCurrent;
