@@ -52,7 +52,7 @@ function addNum() {
             divide = false;
             subt = false;
             isCurrent = true;
-            numDisplay.push(' +');
+            numDisplay.push(` + `);
             //numDisplay.join(" ");
             outputNum(numDisplay);
         
@@ -64,7 +64,7 @@ function addNum() {
         divide = false;
         subt = false;
         isCurrent = true;
-        numDisplay.push(' +');
+        numDisplay.push(` + `);
         //console.log(false + "addnum")
         //console.log(numDisplay);
         outputNum(numDisplay);
@@ -83,7 +83,7 @@ function subtNum() {
         mult = false;
         divide = false;
         isCurrent = true;
-        numDisplay.push(" -");
+        numDisplay.push(` - `);
         outputNum(numDisplay);
     
     }
@@ -93,7 +93,7 @@ function subtNum() {
         mult = false;
         divide = false;
         isCurrent = true;
-        numDisplay.push(" -");
+        numDisplay.push(` - `);
         outputNum(numDisplay);
         outputAns()
     }
@@ -106,7 +106,7 @@ function divideNum() {
         mult = false;
         divide = true;
         isCurrent = true;
-        numDisplay.push(" /");
+        numDisplay.push(` / `);
         outputNum(numDisplay);
     
     }
@@ -116,7 +116,7 @@ function divideNum() {
         mult = false;
         divide = true;
         isCurrent = true;
-        numDisplay.push(" /");
+        numDisplay.push(` / `);
         outputNum(numDisplay);
         outputAns()
     }
@@ -129,7 +129,7 @@ function multNum() {
         mult = true;
         divide = false;
         isCurrent = true;
-        numDisplay.push(" *");
+        numDisplay.push(` * `);
         outputNum(numDisplay);
     
     }
@@ -139,7 +139,7 @@ function multNum() {
         mult = true;
         divide = false;
         isCurrent = true;
-        numDisplay.push(" *");
+        numDisplay.push(` * `);
         outputNum(numDisplay);
         outputAns()
     }
@@ -191,23 +191,25 @@ function clearAll(clear) {
 function clearCurrent() {
     numCurrent = [0];
     if (numPrev.length == 1 && numCurrent.length == 0) {
-        //console.log("reset answer to zero");
+        console.log("reset answer to zero");
         numPrev = [0];
+        
     }
     //console.log(numCurrent.length + "current");
     
     //if 
-    else if (numDisplay.length >= 3) {
+    if (numDisplay.length >= 1) {
         //numDisplay = numDisplay.pop();
-        numDisplay.pop();
-        numDisplay = [numDisplay];
+        // numDisplay.pop();
+        // numDisplay = [numDisplay];
+        numDisplay = [tempAns];
         //numDisplay.push(numCurrent);
         
-        //console.log(numDisplay + "pop");
+        console.log(numDisplay + "pop");
     }
     else {
         numDisplay = numCurrent;
-        //console.log("numdisplay = numcurrent");
+        console.log("numdisplay = numcurrent");
     }
     //numDisplay = [numPrev, numCurrent];
     
@@ -218,9 +220,11 @@ function outputNum(num) {
         numDisplay.shift();
         numDisplay = [numDisplay];
     }
-    //console.log(num);
-    //numDisplay = numDisplay.join(' ');
+    
+    num = numDisplay.join('');
+    
     //numDisplay = [numDisplay];
+    console.log(num);
     document.getElementById("numDisplayP").innerHTML = num;
 }
 function outputAns(clear) {
@@ -234,10 +238,10 @@ function outputAns(clear) {
         numPrev.push(0);
     }
     
-    numPrev = parseInt(numPrev.join(''));
-    numCurrent = parseInt(numCurrent.join(''));
-    //console.log(numPrev + "numPrev");
-    //console.log(numCurrent + "numCurrent");
+    numPrev = parseFloat(numPrev.join(''));
+    numCurrent = parseFloat(numCurrent.join(''));
+    console.log(numPrev + "numPrev");
+    console.log(numCurrent + "numCurrent");
     
     
     if (add == true) {
@@ -247,6 +251,7 @@ function outputAns(clear) {
         //   tempAns = tempAns;  
         // }
         // else {
+            //console.log(numPrev, numCurrent);
             tempAns = (numPrev + numCurrent);
             //console.log(tempAns + "tempans");
         // }
