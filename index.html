@@ -3,40 +3,62 @@
       <meta charset="UTF-8">
       <!--Bootstrap link:-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="calc.css">
       <script language="javascript" type="text/javascript" src="calculator.js"></script>
     </head>
     
     <body>
-        <div id="outputDiv">outputDiv
-            <p id="numDisplayP"></p>
-            <p id="outputP"></p>
-        </div>
-        <div>buttonDiv
-            <button type="button" class="btn btn-primary" onclick="addNum()">+</button>
-            <button type="button" class="btn btn-primary" onclick="subtNum()">-</button>
-            <button type="button" class="btn btn-primary" onclick="divideNum()">/</button>
-            <button type="button" class="btn btn-primary"onclick="multNum()">*</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(0)">0</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(1)">1</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(2)">2</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(3)">3</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(4)">4</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(5)">5</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(6)">6</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(7)">7</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(8)">8</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum(9)">9</button>
-            <button type="button" class="btn btn-primary" onclick="storeNum('.')">.</button>
-            <button type="button" class="btn btn-primary" onclick="clearAll(clear = 'ac')">AC</button>
-            <button type="button" class="btn btn-primary" onclick="clearCurrent()">CE</button>
-            <button type="button" class="btn btn-primary" onclick="outputAns(clear = true)">=</button>
-        </div>
+        
+        
+        
+        <div class = "main-container">
+            <div id="outputDiv">
+                <p id="numDisplayP"></p>
+                <p id="outputP"></p>
+            </div>
 
-        
-        
-        <div id="copyrightDiv">
-                Created by Timothy Stanislav: IndoorKin Productions &copy; 
+            <div class = "column" id="column1">
+                <button type="button" class="btn btn-primary" onclick="addNum()">+</button>
+                <button type="button" class="btn btn-primary" onclick="subtNum()">-</button>
+                <button type="button" class="btn btn-primary" onclick="clearAll(clear = 'ac')">AC</button>
+            </div>
+            
+            <div class = "column" id="column2">
+                    <button type="button" class="btn btn-primary" onclick="divideNum()">/</button>
+                    <button type="button" class="btn btn-primary"onclick="multNum()">*</button>
+                    <button type="button" class="btn btn-primary" onclick="clearCurrent()">CE</button>  
+            </div>
+            
+            <div class = "column" id="column3">
+                    <button type="button" class="btn btn-primary" onclick="storeNum(7)">7</button>    
+                    <button type="button" class="btn btn-primary" onclick="storeNum(8)">8</button>
+                    <button type="button" class="btn btn-primary" onclick="storeNum(9)">9</button>    
+            </div>
+            
+            <div class = "column" id ="column4">
+                    <button type="button" class="btn btn-primary" onclick="storeNum(4)">4</button>
+                    <button type="button" class="btn btn-primary" onclick="storeNum(5)">5</button>
+                    <button type="button" class="btn btn-primary" onclick="storeNum(6)">6</button>    
+            </div>
+
+            <div class = "column" id="column5">
+                    <button type="button" class="btn btn-primary" onclick="storeNum(1)">1</button>
+                    <button type="button" class="btn btn-primary" onclick="storeNum(2)">2</button>
+                    <button type="button" class="btn btn-primary" onclick="storeNum(3)">3</button>     
+            </div>
+
+            <div class = "column" id="column6">
+                    <button type="button" class="btn btn-primary" onclick="storeNum('.')">.</button>
+                    <button type="button" class="btn btn-primary" onclick="storeNum(0)">0</button>
+                    <button type="button" class="btn btn-primary" onclick="outputAns(clear = true)">=</button>       
+            </div>
+            
+            <div class = "column" id="copyrightDiv">
+                    Created by: Timothy Stanislav - IndoorKin Productions &copy; 
+            </div>
+
         </div>
+        
     </body>
 
 </html>

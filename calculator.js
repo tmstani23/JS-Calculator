@@ -228,6 +228,7 @@ function outputNum(num) {
     document.getElementById("numDisplayP").innerHTML = num;
 }
 function outputAns(clear) {
+    //add error message if number is too long(numprev,numcurr, or tempans)
     //merge all numbers in array into one number:
     if (numCurrent.length == 0) {
         //console.log("numCurrentlength is 0")
