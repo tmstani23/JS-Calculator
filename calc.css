@@ -1,5 +1,6 @@
 #outputDiv {
     display: flex;
+    overflow: auto;
     border: 1px solid rgb(225, 225, 225); 
     height: 150px; 
     align-content: center;
@@ -8,6 +9,7 @@
     border-radius: 5px;
     flex-direction: column;
 }
+
 .main-container {
     margin: 0 auto;
     margin-top: 10%;
@@ -16,53 +18,43 @@
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    width: 300px;
+    width: 250px;
     padding: 10px;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .btn-primary {
     width: 30%;
     margin: 2px;
-    font-size: 20px;
+    font-size: 15px;
     border-radius: 5px;
     background-color: rgb(110, 20, 255);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .column {
     justify-content: space-around;
     display: flex;
     font-size: 15px;
 }
+
 #numDisplayP {
     font-size: 25px;
 }
+
 #outputP {
     font-size: 35px;
 }
-#column1 {
-    
-    
-}
-#column2 {
-    
-}
-#column3 {
-    
-}
-#column4 {
-    
-}
-#column5 {
-    
-}
-#column6 {
-    
-}
+
 p {
     color:rgb(225, 225, 225);
     text-align: center;
+    word-wrap: break-word;
+
+    
 }
+
 #copyrightDiv {
     color: rgb(225, 225, 225);
     text-align: center;
