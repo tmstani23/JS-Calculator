@@ -12,7 +12,8 @@
 
 .main-container {
     margin: 0 auto;
-    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-top: 5%;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -27,7 +28,8 @@
 .btn-primary {
     width: 30%;
     margin: 2px;
-    font-size: 15px;
+    font-size: 20px;
+    font-family: 'Open Sans Condensed', sans-serif;
     border-radius: 5px;
     background-color: rgb(110, 20, 255);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -41,6 +43,7 @@
 
 #numDisplayP {
     font-size: 25px;
+    margin-top: 5%;
 }
 
 #outputP {
@@ -51,10 +54,19 @@ p {
     color:rgb(225, 225, 225);
     text-align: center;
     word-wrap: break-word;
-
+    font-family: 'Open Sans Condensed', sans-serif;
     
 }
-
+h1 {
+  color: black;
+  margin-top: 10%;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  font-size: 150px;
+  /*font-family: 'Sedgwick Ave Display', cursive;*/
+  font-family: 'Open Sans Condensed', sans-serif;
+}
 #copyrightDiv {
     color: rgb(225, 225, 225);
     text-align: center;
