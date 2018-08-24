@@ -21,7 +21,7 @@ Clicking AC will clear the current functions and reset everything to zero.
 Clicking CE will return the most current answer and reset anything else.
 
 # Screenshots:
-![Alt text](https://github.com/tmstani23/JS-Calculator/blob/Master/calc1.jpg)
-![Alt text](https://github.com/tmstani23/JS-Calculator/blob/Master/calc2.jpg)
+![Alt text](https://raw.githubusercontent.com/tmstani23/JS-Calculator/master/calc1.jpg)
+![Alt text](https://raw.githubusercontent.com/tmstani23/JS-Calculator/master/calc2.jpg)
 
 
